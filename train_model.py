@@ -9,12 +9,12 @@ import joblib
 import os
 
 # Configuración
+# Ruta relativa para el archivo CSV
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-scaler_path = os.path.join(BASE_DIR, 'scaler.pkl')
-best_model_path = os.path.join(BASE_DIR, 'mejor_modelo.pkl')
+csv_file_path = os.path.join(BASE_DIR, 'Housing.csv')
 
-# Cargar los datos
-data = pd.read_csv(r'C:\Users\daniela\Music\Housing.csv')
+# Leer los datos
+data = pd.read_csv(csv_file_path)
 
 # Limpieza de datos
 data.dropna(inplace=True)

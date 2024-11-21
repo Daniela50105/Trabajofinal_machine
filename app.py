@@ -16,8 +16,12 @@ except (pickle.UnpicklingError, FileNotFoundError):
     import joblib
     model = joblib.load('mejor_modelo.pkl')
 
+# Ruta relativa para el archivo CSV
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_file_path = os.path.join(BASE_DIR, 'Housing.csv')
+
 # Leer los datos
-data = pd.read_csv('C:/Users/daniela/Music/Housing.csv')
+data = pd.read_csv(csv_file_path)
 
 # Convertir las variables categóricas 'yes'/'no' a valores binarios (1 y 0)
 data['mainroad'] = data['mainroad'].map({'yes': 1, 'no': 0})
