@@ -9,11 +9,15 @@ import joblib
 import os
 
 # Configuración
-# Ruta relativa para el archivo CSV
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-csv_file_path = os.path.join(BASE_DIR, 'Housing.csv')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Directorio base donde está el script
+scaler_path = os.path.join(BASE_DIR, 'scaler.pkl')  # Ruta relativa al archivo scaler.pkl
+best_model_path = os.path.join(BASE_DIR, 'mejor_modelo.pkl')  # Ruta relativa al archivo mejor_modelo.pkl
 
-# Leer los datos
+# Ruta al archivo CSV en la carpeta 'data'
+data_folder_path = os.path.join(BASE_DIR, 'data')  # Ruta a la carpeta 'data'
+csv_file_path = os.path.join(data_folder_path, 'Housing.csv')  # Ruta completa al archivo CSV
+
+# Cargar los datos
 data = pd.read_csv(csv_file_path)
 
 # Limpieza de datos
