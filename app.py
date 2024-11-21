@@ -17,22 +17,27 @@ except (pickle.UnpicklingError, FileNotFoundError):
     import joblib
     model = joblib.load('mejor_modelo.pkl')
 
-# Ruta relativa para el archivo CSV
+# Ruta para el archivo CSV
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-csv_file_path = os.path.join(BASE_DIR, 'Housing.csv')
+# Asegúrate de que el archivo CSV esté en la carpeta "data" en la misma ubicación que tu app.py
+csv_file_path = os.path.join(BASE_DIR, 'data', 'Housing.csv')
 
-# Leer los datos
-data = pd.read_csv(csv_file_path)
+try:
+    # Leer los datos
+    data = pd.read_csv(csv_file_path)
 
-# Convertir las variables categóricas 'yes'/'no' a valores binarios (1 y 0)
-data['mainroad'] = data['mainroad'].map({'yes': 1, 'no': 0})
-data['guestroom'] = data['guestroom'].map({'yes': 1, 'no': 0})
-data['basement'] = data['basement'].map({'yes': 1, 'no': 0})
-data['hotwaterheating'] = data['hotwaterheating'].map({'yes': 1, 'no': 0})
-data['airconditioning'] = data['airconditioning'].map({'yes': 1, 'no': 0})
-data['parking'] = data['parking'].map({'yes': 1, 'no': 0})
-data['prefarea'] = data['prefarea'].map({'yes': 1, 'no': 0})
-data['furnishingstatus'] = data['furnishingstatus'].map({'furnished': 1, 'unfurnished': 0})
+    # Convertir las variables categóricas 'yes'/'no' a valores binarios (1 y 0)
+    data['mainroad'] = data['mainroad'].map({'yes': 1, 'no': 0})
+    data['guestroom'] = data['guestroom'].map({'yes': 1, 'no': 0})
+    data['basement'] = data['basement'].map({'yes': 1, 'no': 0})
+    data['hotwaterheating'] = data['hotwaterheating'].map({'yes': 1, 'no': 0})
+    data['airconditioning'] = data['airconditioning'].map({'yes': 1, 'no': 0})
+    data['parking'] = data['parking'].map({'yes': 1, 'no': 0})
+    data['prefarea'] = data['prefarea'].map({'yes': 1, 'no': 0})
+    data['furnishingstatus'] = data['furnishingstatus'].map({'furnished': 1, 'unfurnished': 0})
+
+except FileNotFoundError:
+    print(f"Error: El archivo CSV no se encontró en la ruta: {csv_file_path}")
 
 # Función para generar el histograma interactivo
 def generar_histograma():
