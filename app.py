@@ -5,6 +5,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.preprocessing import StandardScaler
+import os
 
 app = Flask(__name__)
 
