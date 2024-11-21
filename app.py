@@ -109,5 +109,7 @@ def predict():
     except Exception as e:
         return f"Error al predecir el precio: {e}"
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Si no hay puerto definido, usará el 5000 por defecto
+    app.run(debug=True, host='0.0.0.0', port=port)
